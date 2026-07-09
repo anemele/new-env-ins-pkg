@@ -1,0 +1,146 @@
+
+[7zip]
+termux = '.'
+
+[batcat]
+termux = 'bat'
+
+[c-compiler]
+termux = 'clang'
+dnf = 'gcc'
+
+[chezmoi]
+termux = '.'
+
+[cmake]
+termux = '.'
+
+[curl]
+termux = '.'
+
+[fd-find]
+termux = 'fd'
+
+[ffmpeg]
+termux = '.'
+
+[file]
+termux = '.'
+
+[fzf]
+termux = '.'
+
+[ghcup]
+
+[ghostscript]
+termux = '.'
+
+[git]
+termux = '.'
+apt = '.'
+dnf = '.'
+pacman = '.'
+scoop = '.'
+
+[github-cli]
+termux = 'gh'
+
+[glow]
+termux = '.'
+
+[graphviz]
+termux = '.'
+
+[gzip]
+termux = '.'
+
+[haskell]
+termux = 'ghc'
+
+[hugo-extended]
+termux = 'hugo'
+
+[jq]
+termux = 'jq'
+
+[julia]
+
+[juliaup]
+scoop = 'a3e/juliaup'
+
+[make]
+termux = '.'
+
+[matplotlib]
+termux = '.'
+
+[neovim]
+termux = '.'
+
+[python-lxml]
+termux = '.'
+
+[python-numpy]
+termux = '.'
+
+[python-pillow]
+termux = '.'
+
+[python-pip]
+termux = '.'
+
+[python-pynvim]
+termux = '.'
+
+[python-scipy]
+termux = '.'
+
+[python]
+termux = '.'
+
+[ripgrep]
+termux = '.'
+
+[ruff]
+termux = '.'
+
+[rust-analyzer]
+termux = '.'
+
+[rust]
+termux = '.'
+
+[rustup]
+
+[sd]
+termux = '.'
+
+[syncthing]
+termux = '.'
+
+[tinymist]
+termux = '.'
+
+[ty]
+termux = '.'
+
+[typst]
+termux = '.'
+
+[unzip]
+termux = '.'
+
+[uv]
+termux = '.'
+
+[wget]
+termux = '.'
+
+[which]
+termux = '.'
+
+[yazi]
+termux = '.'
+
+[zip]
+termux = '.'
