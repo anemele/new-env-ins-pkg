@@ -1,3 +1,4 @@
+from textwrap import dedent
 import argparse
 import re
 import tomllib
@@ -25,8 +26,7 @@ type PKG_STRUCT = dict[str, dict[str, str]]
 MARK_SAME = "."
 
 
-def sort_pkgs() -> None:
-    text = PKG_FILE_PATH.read_text().strip()
+def _sort_pkgs(text: str) -> str:
     text = re.sub("\n{2,}", "\n", text)
     name_iter = re.finditer(r"^\[[A-Za-z0-9_-]+\]$", text, re.MULTILINE)
 
@@ -43,7 +43,48 @@ def sort_pkgs() -> None:
     # append an empty string to have an EOL
     chunks.append("")
 
-    PKG_FILE_PATH.write_text("\n".join(chunks))
+    return "\n".join(chunks)
+
+
+def test_sort_pkgs():
+    sample = dedent("""
+    [7zip]
+    termux='.'
+
+    [hugo]
+    termux='.'
+    [git]
+    [uv]
+    dnf='.'
+    """)
+
+    expected = dedent("""
+
+    [7zip]
+    termux='.'
+
+    [git]
+
+    [hugo]
+    termux='.'
+
+    [uv]
+    dnf='.'
+
+    """)
+
+    got = _sort_pkgs(sample)
+
+    assert got == expected
+    assert got == _sort_pkgs(got)
+
+    print("all tests pass")
+
+
+def sort_pkgs() -> None:
+    text = PKG_FILE_PATH.read_text().strip()
+    sorted_text = _sort_pkgs(text)
+    PKG_FILE_PATH.write_text(sorted_text)
 
 
 def parse_pkgs(pm: str) -> Iterator[str]:
@@ -66,8 +107,8 @@ def parse_pkgs(pm: str) -> Iterator[str]:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
+    parser.add_argument("pm", nargs="?", choices=PM, help="package manager")
     parser.add_argument("--sort", action="store_true", help="sort pkgs.toml")
-    parser.add_argument("--pm", help="package manager")
 
     args = parser.parse_args()
 
